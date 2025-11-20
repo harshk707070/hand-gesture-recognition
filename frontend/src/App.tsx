@@ -391,7 +391,8 @@ export default function App(): JSX.Element {
       const fd = new FormData();
       fd.append("file", blob, "input.png");
 
-      const res = await fetch("http://127.0.0.1:8000/predict/", {
+      const res = await fetch("https://hand-gesture-recognition-nbhx.onrender.com/predict/", 
+        {
         method: "POST",
         body: fd,
       });
