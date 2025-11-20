@@ -1,0 +1,141 @@
+:root{
+  --bg-1: #071021;
+  --bg-2: #071433;
+  --card-bg: rgba(255,255,255,0.03);
+  --muted: #94a3b8;
+  --accent-start: #3b82f6;
+  --accent-end: #8b5cf6;
+  --glass-border: rgba(255,255,255,0.06);
+}
+
+* { box-sizing: border-box; }
+body, html, #root { height: 100%; margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: linear-gradient(180deg, var(--bg-1), var(--bg-2));
+}
+
+/* card */
+.card {
+  border-radius: 20px;
+  padding: 20px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  box-shadow: 0 8px 30px rgba(2,6,23,0.7);
+  border: 1px solid var(--glass-border);
+  color: #e6eef8;
+}
+
+/* header */
+.card-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 12px; }
+.brand { font-size: 20px; margin: 0; color: white; background: linear-gradient(90deg, var(--accent-start), var(--accent-end)); -webkit-background-clip: text; background-clip:text; color:transparent; font-weight:700; }
+.sub { font-size: 12px; color: var(--muted); margin-top:6px; }
+
+/* status */
+.status { text-align:right; }
+.status-label { font-size: 11px; color: var(--muted); }
+.status-val { font-size: 13px; color: #dbeafe; font-weight:600; }
+
+/* camera card */
+.camera-card {
+  margin: 6px auto 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(0,0,0,0.75);
+  border: 1px solid rgba(255,255,255,0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* live / overlay */
+.live-wrap { width:100%; height:100%; position:relative; }
+.video { width:100%; height:100%; object-fit:cover; display:block; }
+.overlay { position:absolute; left:0; top:0; width:100%; height:100%; pointer-events:none; }
+
+/* FPS badge */
+.fps-badge {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  background: rgba(0,0,0,0.6);
+  padding: 6px 8px;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #9ef08b;
+  border: 1px solid rgba(255,255,255,0.02);
+}
+
+/* preview mode */
+.preview-wrap { width:100%; height:100%; display:flex; align-items:center; justify-content:center; background: linear-gradient(180deg, rgba(10,12,18,0.5), rgba(8,10,15,0.6)); }
+.preview-img { width: 320px; height: 320px; object-fit:cover; border-radius: 14px; box-shadow: 0 10px 30px rgba(2,6,23,0.8); }
+
+/* controls */
+.controls { display:flex; justify-content:space-between; align-items:center; margin-top:16px; gap:12px; }
+.left-controls { display:flex; gap:10px; align-items:center; }
+.right-controls { display:flex; gap:12px; align-items:center; }
+
+/* buttons */
+.btn {
+  border: none;
+  cursor: pointer;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition: transform .15s ease, opacity .15s ease;
+  user-select: none;
+}
+
+.btn:active { transform: translateY(1px); }
+
+.btn.primary {
+  background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+  color: white;
+  box-shadow: 0 8px 26px rgba(59,130,246,0.12);
+}
+
+.btn.muted {
+  background: rgba(255,255,255,0.03);
+  color: #dbeafe;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.btn.accent {
+  background: white;
+  color: #0f172a;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight:700;
+}
+
+/* small fps */
+.fps-small { color: var(--muted); font-size:12px; }
+.fps-val { color: #9ef08b; font-weight:700; }
+
+/* result row */
+.result-row { margin-top: 14px; display:flex; align-items:center; gap:12px; }
+.prediction-card {
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:10px 14px; border-radius:12px; background: linear-gradient(90deg, rgba(59,130,246,0.08), rgba(139,92,246,0.06));
+  border: 1px solid rgba(255,255,255,0.02);
+}
+.pred-left { display:flex; align-items:center; gap:12px; }
+.pred-label { font-weight:700; color: #fff; font-size:16px; }
+.pred-confidence { background: rgba(0,0,0,0.35); padding:4px 8px; border-radius:8px; color:#fcd34d; font-weight:700; }
+
+/* no pred text */
+.no-pred { color: var(--muted); font-size:13px; }
+
+/* responsive */
+@media (max-width: 720px) {
+  .card { padding: 16px; width: calc(100% - 32px); }
+  .preview-img { width: 280px; height: 280px; }
+}
